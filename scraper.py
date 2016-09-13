@@ -1,5 +1,5 @@
-from ckan_scraper import scrape_resources
-from geojson_scraper import scrape
+from dc_base_scrapers.ckan_scraper import CkanScraper
+from dc_base_scrapers.geojson_scraper import GeoJsonScraper
 
 
 base_url = 'https://data.yorkopendata.org/api/3/action/package_show?id='
@@ -19,21 +19,29 @@ districts_info = {
 council_id = 'E06000014'
 
 
-stations_url = scrape_resources(
+stations_meta_scraper = CkanScraper(
     base_url,
     stations_info['dataset'],
     stations_info['return_format'],
     stations_info['extra_fields'],
     'utf-8')
-districts_url = scrape_resources(
+stations_url = stations_meta_scraper.scrape()
+
+districts_meta_scraper = CkanScraper(
     base_url,
     districts_info['dataset'],
     districts_info['return_format'],
     districts_info['extra_fields'],
     'utf-8')
+districts_url = districts_meta_scraper.scrape()
 
 
 if stations_url:
-    scrape(stations_url, council_id, 'utf-8', 'stations', key='OBJECTID_1')
+    stations_scraper = GeoJsonScraper(
+        stations_url, council_id, 'utf-8', 'stations', key='OBJECTID_1')
+    stations_scraper.scrape()
+
 if districts_url:
-    scrape(districts_url, council_id, 'utf-8', 'districts', key='OBJECTID')
+    districts_scraper = GeoJsonScraper(
+        districts_url, council_id, 'utf-8', 'districts', key='OBJECTID')
+    districts_scraper.scrape()
