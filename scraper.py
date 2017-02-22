@@ -38,10 +38,10 @@ districts_url = districts_meta_scraper.scrape()
 
 if stations_url:
     stations_scraper = GeoJsonScraper(
-        stations_url, council_id, 'utf-8', 'stations', key='OBJECTID_1', store_raw_data=True)
+        stations_url, council_id, 'utf-8', 'stations', key='OBJECTID_1')
     stations_scraper.scrape()
 
 if districts_url:
     districts_scraper = GeoJsonScraper(
-        districts_url, council_id, 'utf-8', 'districts', key='OBJECTID', store_raw_data=True)
+        districts_url, council_id, 'utf-8', 'districts', key='OBJECTID')
     districts_scraper.scrape()
