@@ -21,6 +21,7 @@ council_id = 'E06000014'
 
 stations_meta_scraper = CkanScraper(
     base_url,
+    council_id,
     stations_info['dataset'],
     stations_info['return_format'],
     stations_info['extra_fields'],
@@ -29,6 +30,7 @@ stations_url = stations_meta_scraper.scrape()
 
 districts_meta_scraper = CkanScraper(
     base_url,
+    council_id,
     districts_info['dataset'],
     districts_info['return_format'],
     districts_info['extra_fields'],
