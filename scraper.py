@@ -45,5 +45,5 @@ if stations_url:
 
 if districts_url:
     districts_scraper = GeoJsonScraper(
-        districts_url, council_id, 'utf-8', 'districts', key='GISDBCEXEDITpollingDistricts_2015OBJECTID')
+        districts_url, council_id, 'utf-8', 'districts', key='OBJECTID')
     districts_scraper.scrape()
