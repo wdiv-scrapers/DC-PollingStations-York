@@ -16,7 +16,7 @@ districts_info = {
     'return_format': 'GeoJSON'
 }
 
-council_id = 'E06000014'
+council_id = 'YOR'
 
 
 stations_meta_scraper = CkanScraper(
