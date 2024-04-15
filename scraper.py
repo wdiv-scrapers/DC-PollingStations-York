@@ -44,7 +44,7 @@ districts_url = "http://data.cyc.opendata.arcgis.com/datasets/8a0d9b3a0ecf449387
 
 if stations_url:
     stations_scraper = GeoJsonScraper(
-        stations_url, council_id, "utf-8", "stations", key="OBJECTID_1"
+        stations_url, council_id, "utf-8", "stations", key="OBJECTID"
     )
     stations_scraper.scrape()
 
